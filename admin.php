@@ -13,11 +13,16 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
    if (isset($_SESSION['user'])){
        header("Location: index.php");
    }
-
-
-	$sql = "SELECT * FROM animals";
-	$result = $connect->query($sql);
-	$data = $result->fetch_assoc();
+   
+   if (isset($_SESSION['user_id'])) {
+	
+    $id = $_SESSION['user_id'];
+  
+    $sql = "SELECT * FROM users WHERE user_id = {$id}";
+    $result = $connect->query($sql);
+  
+    $data = $result->fetch_assoc();
+  
 
 ?>
 <!DOCTYPE html>
@@ -49,6 +54,10 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
       <li class="nav-item">
         <a class="nav-link disabled" href="update.php">Update</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="create.php">Add new Animal</a>
+      </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

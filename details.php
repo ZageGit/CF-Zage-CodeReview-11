@@ -2,12 +2,6 @@
 ob_start();
 session_start();
 
-if( !isset($_SESSION['user']) ) {
-    header("Location: login.php");
-    exit;
-   } 
-
-
 require_once 'actions/db_connect.php';
 
 if ($_GET['animal_id']) {
@@ -19,6 +13,15 @@ if ($_GET['animal_id']) {
 
 	$data = $result->fetch_assoc();
 
+  if (isset($_SESSION['user_id'])) {
+	
+    $id = $_SESSION['user_id'];
+  
+    $sql = "SELECT * FROM users WHERE user_id = {$id}";
+    $result = $connect->query($sql);
+  
+    $data = $result->fetch_assoc();
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,11 +47,15 @@ if ($_GET['animal_id']) {
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="create.php">New Animal</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="update.php">Update</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="create.php">Add new Animal</a>
+      </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

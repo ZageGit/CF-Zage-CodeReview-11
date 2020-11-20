@@ -3,12 +3,6 @@ ob_start();
 session_start();
 require_once 'actions/db_connect.php';
 
-// it will never let you open index(login) page if session is set
-// if ( isset($_SESSION['user'])) {
-// header("Location: index.php");
-// exit;
-// }
-
 $error = false;
 
 if( isset($_POST['btn-login']) ) {
@@ -45,15 +39,16 @@ if( isset($_POST['btn-login']) ) {
   $count = mysqli_num_rows($res); // if uname/pass is correct it returns must be 1 row
  
   if( $count == 1 && $row['user_pass' ]==$password ) {
+    $_SESSION['user_id']= $row['user_id'];
     if($row["user_status"]=='admin'){
-        $_SESSION['admin'] = $row['user_id'];
+        $_SESSION['admin'] = TRUE;
         header( "Location: admin.php");
     } elseif ($row["user_status"]=='s_admin'){
-        $_SESSION['s_admin'] = $row['user_id'];
+        $_SESSION['s_admin'] = TRUE;
         header( "Location: sadmin.php");
     }
     else{
-        $_SESSION['user'] = $row['user_id'];
+        $_SESSION['user'] = TRUE;
         header( "Location: index.php");
     }
   } else {
@@ -80,6 +75,31 @@ if( isset($_POST['btn-login']) ) {
 
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="register.php">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.php">Login</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
 <div class="container ">
 <div class="row centered-form d-flex justify-content-center m-5">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">

@@ -16,26 +16,15 @@ if (isset($_SESSION['admin'])){
   header("Location: admin.php");
 }
 
-
-
-if ($_GET['user_id']) {
+   if (isset($_SESSION['user_id'])) {
 	
-	$id = $_GET['user_id'];
-
-
-
-if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION['s_admin']) ) {
-    header("Location: login.php");
-    exit;
-   } 
-   if (!isset($_SESSION['s_admin'])){
-       header("Location: index.php");
-   }
-
-   $sql = "SELECT * FROM users WHERE user_id = {$id}";
-   $result =  mysqli_query($connect, $sql);
-var_dump($_SESSION);
-
+    $user_id = $_SESSION['user_id'];
+  
+    $sql = "SELECT * FROM users WHERE user_id = {$user_id}";
+    $user_result = $connect->query($sql);
+  
+    $data = $user_result->fetch_assoc();
+  
 ?>
 
 <!DOCTYPE html>
@@ -65,11 +54,18 @@ var_dump($_SESSION);
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="create.php">New Animal</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="update.php">Update</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="create.php">Add new Animal</a>
+      </li>
+      <li>
+      <p>Welcome <?php echo $data['user_name'] ?> you are logged in as <?php echo $data['user_status'] ?></p></li>
+
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -81,6 +77,13 @@ var_dump($_SESSION);
 <h2>User Admnistration</h2>
 <div class="d-flex justify-content-around">
 <?php
+if ($_GET['user_id']) {
+	
+	$id = $_GET['user_id'];
+
+
+   $sql = "SELECT * FROM users WHERE user_id = {$id}";
+   $result =  mysqli_query($connect, $sql);
 
           if ($result->num_rows > 0) {
               while($row = $result->fetch_assoc()) {
@@ -100,7 +103,7 @@ var_dump($_SESSION);
             
               }
             } else {
-              echo "No date available!";
+              echo "No data available!";
             }
 ?>
 
@@ -121,5 +124,6 @@ var_dump($_SESSION);
 </html>
 
 <?php
+}
 }
 ?>

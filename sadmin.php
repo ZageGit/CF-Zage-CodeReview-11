@@ -5,7 +5,7 @@ session_start();
 require_once 'actions/db_connect.php';
 echo "</br> sadmin.php";
 
-if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION['s_admin']) ) {
+if( !isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
    } 
@@ -15,6 +15,16 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
 if (isset($_SESSION['admin'])){
     header("Location: admin.php");
 }
+
+if (isset($_SESSION['user_id'])) {
+	
+	$id = $_SESSION['user_id'];
+
+	$sql = "SELECT * FROM users WHERE user_id = {$id}";
+	$result = $connect->query($sql);
+
+	$data = $result->fetch_assoc();
+
 
 
 
@@ -47,11 +57,18 @@ if (isset($_SESSION['admin'])){
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="create.php">New Animal</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="update.php">Update</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="create.php">Add new Animal</a>
+      </li>
+      <li>
+      <p>Welcome <?php echo $data['user_name'] ?> you are logged in as <?php echo $data['user_status'] ?></p></li>
+
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -102,3 +119,7 @@ if (isset($_SESSION['admin'])){
     
 </body>
 </html>
+
+<?php
+}
+?>
