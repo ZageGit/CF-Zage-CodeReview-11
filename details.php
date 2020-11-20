@@ -74,10 +74,6 @@ if ($result->num_rows > 0) {
   <p>Animal_Descsription: ".$row['animal_description']."</p>
   <p>Animal_Location: ".$row['animal_location']."</p>
   <p>Animal_Age ".$row['animal_age']."</p>
-
-
-  <a href='update.php?animal_id=".$row['animal_id']."'><button type='button' class='btn btn-primary'>Update</button></a>
-  <a href='delete.php?animal_id=".$row['animal_id']."'><button type='button' class='btn btn-danger'>Delete</button></a>
 </div>
 <div class='text-center'>
   <img src='".$row['animal_image']."' class='rounded' alt='".$row['animal_title']."'>
@@ -103,13 +99,13 @@ if ($result->num_rows > 0) {
 
   }
 } else {
-   echo "No date available!";
+   echo "No data available!";
 }
 
            ?>
 </div>
 <nav class="navbar navbar-dark bg-dark sticky-bottom text-white mt-2">
-  <a class="navbar-brand">XTREME LIBRARY</a>
+  <a class="navbar-brand">PetAdoption</a>
     <a class="nav-link" href="logout.php?logout"><button type="button" class="btn btn-danger">Logout</button></a>
 </nav>
 

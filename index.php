@@ -94,5 +94,10 @@ require_once 'actions/db_connect.php';
 
 
 </div>
+<nav class="navbar navbar-dark bg-dark sticky-bottom text-white mt-2">
+  <a class="navbar-brand">PetAdoption</a>
+    <a class="nav-link" href="logout.php?logout"><button type="button" class="btn btn-danger">Logout</button></a>
+</nav>
+
 </body>
 </html>

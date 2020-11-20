@@ -48,7 +48,11 @@ if( isset($_POST['btn-login']) ) {
     if($row["user_status"]=='admin'){
         $_SESSION['admin'] = $row['user_id'];
         header( "Location: admin.php");
-    }else{
+    } elseif ($row["user_status"]=='s_admin'){
+        $_SESSION['s_admin'] = $row['user_id'];
+        header( "Location: sadmin.php");
+    }
+    else{
         $_SESSION['user'] = $row['user_id'];
         header( "Location: index.php");
     }
@@ -81,7 +85,7 @@ if( isset($_POST['btn-login']) ) {
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-			    		<h3 class="panel-title">Login at XTREME LIBRARY </h3>
+			    		<h3 class="panel-title">Login at Pet Adoption </h3>
 			 			</div>
 			 			<div class="panel-body">
    <form role="form "method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete= "off">
@@ -122,8 +126,8 @@ echo  $errMSG; ?>
       
 
     </div>
-    <nav class="navbar navbar-dark bg-dark fixed-bottom text-white mt-2">
-  <a class="navbar-brand">XTREME LIBRARY</a>
+    <nav class="navbar navbar-dark bg-dark sticky-bottom text-white mt-2">
+  <a class="navbar-brand">PetAdoption</a>
     <a class="nav-link" href="logout.php?logout"><button type="button" class="btn btn-danger">Logout</button></a>
 </nav>
 
