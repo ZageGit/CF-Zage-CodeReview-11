@@ -82,11 +82,6 @@ require_once 'actions/db_connect.php';
             } else {
               echo "No date available!";
             }
-
-
-
-
-
 ?>
 
 </div>

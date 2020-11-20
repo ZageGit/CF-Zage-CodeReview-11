@@ -3,20 +3,38 @@ ob_start();
 session_start();
 
 require_once 'actions/db_connect.php';
-echo "</br> sadmin.php";
+echo "</br> user_details.php";
+
+if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION['s_admin']) ) {
+  header("Location: login.php");
+  exit;
+ } 
+ if (isset($_SESSION['user'])){
+  header("Location: index.php");
+}
+if (isset($_SESSION['admin'])){
+  header("Location: admin.php");
+}
+
+
+
+if ($_GET['user_id']) {
+	
+	$id = $_GET['user_id'];
+
+
 
 if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION['s_admin']) ) {
     header("Location: login.php");
     exit;
    } 
-   if (isset($_SESSION['user'])){
-    header("Location: index.php");
-}
-if (isset($_SESSION['admin'])){
-    header("Location: admin.php");
-}
+   if (!isset($_SESSION['s_admin'])){
+       header("Location: index.php");
+   }
 
-
+   $sql = "SELECT * FROM users WHERE user_id = {$id}";
+   $result =  mysqli_query($connect, $sql);
+var_dump($_SESSION);
 
 ?>
 
@@ -60,11 +78,9 @@ if (isset($_SESSION['admin'])){
   </div>
 </nav>
 <div class="container">
-<h2>All User</h2>
+<h2>User Admnistration</h2>
 <div class="d-flex justify-content-around">
 <?php
-          $sql = "SELECT * FROM users";
-          $result =  mysqli_query($connect, $sql);
 
           if ($result->num_rows > 0) {
               while($row = $result->fetch_assoc()) {
@@ -75,9 +91,10 @@ if (isset($_SESSION['admin'])){
                     <h5 class='card-title'>".$row['user_name']."</h5>
                     <p class='card-text'>".$row['user_email']."</p>
                     </div>
-                <div class='card-body'>
-                <a href='user_details.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-primary'>Details</button></a>
-                </div>
+                    <div>
+                    <a href='update.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-primary'>Update</button></a>
+                    <a href='delete.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-danger'>Delete</button></a>                  
+                    </div>
             </div>
           " ;
             
@@ -102,3 +119,7 @@ if (isset($_SESSION['admin'])){
     
 </body>
 </html>
+
+<?php
+}
+?>

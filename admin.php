@@ -14,6 +14,7 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
        header("Location: index.php");
    }
 
+
 	$sql = "SELECT * FROM animals";
 	$result = $connect->query($sql);
 	$data = $result->fetch_assoc();
