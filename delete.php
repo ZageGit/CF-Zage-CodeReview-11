@@ -60,12 +60,7 @@ if ($result->num_rows > 0) {
   } else {
      echo "No date available!";
   }
-  
-
 ?>
-
-
-
        </div>
    </div>
 </div>
@@ -77,8 +72,6 @@ if ($result->num_rows > 0) {
 
 </body>
 </html>
-
-
 <?php
 }
 ?>
