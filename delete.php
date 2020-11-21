@@ -1,23 +1,14 @@
 <?php
 
 require_once 'actions/db_connect.php';
-echo "</br> delete.php";
-
-// if(isset($_SESSION['user_id']))  {
-//     header("Location: login.php");
-//     exit;
-//    } 
-//    if (isset($_SESSION['user'])){
-//        header("Location: index.php");
-//    }
-
-// getting user ID from $_SESSION to display values of logged in User
-   if (isset($_SESSION['user_id'])) {
-	$id = $_SESSION['user_id'];
-    $sql = "SELECT * FROM users WHERE user_id = {$id}";
-	$result = $connect->query($sql);
-	$data = $result->fetch_assoc();
-?>
+require_once 'helper/UserHelper.php';
+if(!isLoggedIn()) {
+  header("Location: login.php");
+ } 
+ if (!isAdmin() && !isSadmin()){
+  header("Location: index.php");
+}
+ ?>
 
 <html>
 <head>
@@ -90,5 +81,4 @@ if ($result->num_rows > 0) {
 
 <?php
 }
-   }
 ?>

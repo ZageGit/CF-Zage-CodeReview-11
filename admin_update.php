@@ -1,6 +1,12 @@
 <?php
 require_once 'actions/db_connect.php';
-
+require_once 'helper/UserHelper.php';
+if(!isLoggedIn()) {
+  header("Location: login.php");
+ } 
+ if (!isAdmin() && !isSadmin()){
+  header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>

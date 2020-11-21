@@ -1,5 +1,5 @@
 <?php
-// error_reporting( ~E_DEPRECATED & ~E_NOTICE );
+error_reporting( ~E_DEPRECATED & ~E_NOTICE );
 
 
 ob_start();

@@ -1,7 +1,13 @@
 <?php
 
 require_once 'actions/db_connect.php';
-echo "</br> update.php";  
+require_once 'helper/UserHelper.php';
+if(!isLoggedIn()) {
+  header("Location: login.php");
+ } 
+ if (!isAdmin() && !isSadmin()){
+  header("Location: index.php");
+}
 
       if ($_GET['animal_id']) {
         $animal_id = $_GET['animal_id'];
@@ -98,5 +104,5 @@ include 'templates/nav.php';
 
 <?php
       }
-     }
+     
 ?>

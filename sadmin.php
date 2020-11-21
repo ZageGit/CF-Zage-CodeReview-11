@@ -1,17 +1,13 @@
 <?php
 
 require_once 'actions/db_connect.php';
-echo "</br> sadmin.php";
+require_once 'helper/UserHelper.php';
 
-if( !isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
-   } 
-   if (isset($_SESSION['user'])){
-    header("Location: index.php");
-}
-if (isset($_SESSION['admin'])){
-    header("Location: admin.php");
+if(!isLoggedIn()) {
+  header("Location: login.php");
+ } 
+ if (!isSadmin()){
+  header("Location: index.php");
 }
 
 ?>
