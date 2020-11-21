@@ -1,5 +1,9 @@
 <?php
 require_once 'actions/db_connect.php';
+require_once 'helper/UserHelper.php';
+if(isLoggedIn()) {
+  header("Location: index.php");
+ } 
 
 $error = false;
 

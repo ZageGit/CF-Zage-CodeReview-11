@@ -1,16 +1,12 @@
 <?php 
-
-if(isset($_SESSION['user'])!="") {
-    header("Location: index.php");
-}
-if(isset($_SESSION['admin'])!="") {
-   header("Location: admin.php");
-}
-if(isset($_SESSION['s_admin'])!="") {
-   header("Location: sadmin.php");
-}
-
 include_once 'actions/db_connect.php';
+require_once 'helper/UserHelper.php';
+if(isLoggedIn()) {
+  header("Location: index.php");
+ } 
+
+
+
 $error = false;
 if(isset($_POST['btn-signup'])){
 
