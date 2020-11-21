@@ -2,10 +2,11 @@
 
 require_once 'actions/db_connect.php';
 require_once 'helper/UserHelper.php';
+
 if(!isLoggedIn()) {
   header("Location: login.php");
  } 
- if (!isAdmin() && !isSadmin()){
+ if (!isSadmin()){
   header("Location: index.php");
 }
 
@@ -44,7 +45,7 @@ include 'templates/nav.php';
     <div class="form-group col-md-6">
       <label for="inputPassword4">Status</label>
       <select class="form-control" id="exampleFormControlSelect1" name="user_status">
-      <option><?php echo $animal_data['animal_size'] ?></option>
+      <option><?php echo $user_data['user_status'] ?></option>
       <option>user</option>
       <option>admin</option>
       <option>s_admin</option>
@@ -54,18 +55,9 @@ include 'templates/nav.php';
     <!-- Default input -->
     <div class="form-group col-md-6">
       <label for="inputEmail4">user_email</label>
-      <input type="text" name="user_email" class="form-control" id="inputEmail4" placeholder="User-Email" value="<?php echo $user_data['animal_email'] ?>">
+      <input type="text" name="user_email" class="form-control" id="inputEmail4" placeholder="User-Email" value="<?php echo $user_data['user_email'] ?>">
     </div>
     <!-- Default input -->
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Animal Breed</label>
-      <input type="text" name="animal_breed" class="form-control" id="inputPassword4" placeholder="Animal breed" value="<?php echo $animal_data['animal_breed'] ?>">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Short Description</label>
-    <textarea type="text" class="form-control"name="animal_description" id="exampleFormControlTextarea1" rows="3" ><?php echo $animal_data['animal_description'] ?></textarea>
-  </div>
   <div class="form-row">
     <!-- Default input -->
     <input type="hidden" name="user_id" value="<?php echo $user_data['user_id'] ?>">

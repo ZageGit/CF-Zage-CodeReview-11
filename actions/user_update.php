@@ -61,27 +61,19 @@ if (isset($_SESSION['user_id'])) {
 <?php 
 
 if($_POST){
-  $animal_id= $_POST['animal_id'];
-    $animal_name = $_POST['animal_name'];
-    $animal_size = $_POST['animal_size'];
-    $animal_image = $_POST['animal_image'];
-    $animal_location = $_POST['animal_location'];
-    $animal_age = $_POST['animal_age'];
-    $animal_hobbies = $_POST['animal_hobbies'];
-    $animal_breed = $_POST['animal_breed'];
-    $animal_description = $_POST['animal_description'];
-
-
-
+  $user_id= $_POST['user_id'];
+    $user_name = $_POST['user_name'];
+    $user_status = $_POST['user_status'];
+    $user_email = $_POST['user_email'];
     
-    $sql ="UPDATE animals SET animal_size='$animal_size', animal_name='$animal_name', animal_image='$animal_image', animal_description='$animal_description', animal_location='$animal_location', animal_age='$animal_age', animal_hobbies='$animal_hobbies', animal_breed='$animal_breed' WHERE animal_id = {$animal_id}";
+    $sql ="UPDATE users SET user_name='$user_name', user_status='$user_status', user_email='$user_email' WHERE user_id = {$user_id}";
     if($connect->query($sql)) {
 
         echo "<div class='alert alert-success' role='alert'>
-        Updating animal successful!
+        Updating User successful!
       </div>";
-		echo "<a href='../update.php?animal_id=" . $animal_id . "'><button type='button' class='btn btn-primary'>Back</button></a>";
-		echo "<a href='../admin.php'><button type='button' class='btn btn-success'>Home</button></a>";
+		echo "<a href='../update.php?user_id=" . $user_id . "'><button type='button' class='btn btn-primary'>Back</button></a>";
+		echo "<a href='../sadmin.php'><button type='button' class='btn btn-success'>Home</button></a>";
 
 
     } else {
