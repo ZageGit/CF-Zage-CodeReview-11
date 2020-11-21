@@ -20,6 +20,7 @@ $(document).ready(function(){
 		data:'search='+$(this).val(),
 		
 		success: function(data){
+            $("#search_input").value=data;
 			$("#suggesstion-box").show();
 			$("#suggesstion-box").html(data);
 			
@@ -33,12 +34,7 @@ $("#suggesstion-box").hide();}
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <span class="navbar-brand">Navbar</span>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -50,42 +46,35 @@ $("#suggesstion-box").hide();}
         <a class="nav-link" href="login.php">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index_small.php">Small</a>
+        <a class="nav-link" href="general.php">General</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index_big.php">Big</a>
+        <a class="nav-link" href="senior.php">Senior</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index_senior.php">Senior</a>
+        <a class="nav-link" href="sadmin.php">S_ADMIN - SEE USER</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="admin.php">Admin</a>
+        <a class="nav-link" href="create.php">ADMN - Create animal</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="sadmin.php">SuperAdmin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="create.php">Create</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="admin_update.php">Update Animals</a>
+        <a class="nav-link" href="admin_update.php">ADMIN - Update animal</a>
       </li>
      <li>
       <?php  
       if (isLoggedIn()) 
       {?>
-      <p>Welcome <?php echo $data['user_name'] ?> you are logged in as <?php echo $data['user_status'] ?></p>
+      <p class="nav-link text-dark font-weight-bold">Welcome <?php echo $data['user_name'] ?> you are logged in as <?php echo $data['user_status'] ?></p>
       <?php } else {?>
-        <p>Please log in <a href="login.php">here</a></p>
+        <p class="nav-link text-dark font-weight-bold">Please log in <a href="login.php">here</a></p>
         <?php 
       }
       ?>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0 ">
       <input class="form-control mr-sm-2" name="search_input" id="search_input" type="search" placeholder="Search" aria-label="Search">
       <div id="suggesstion-box"></div>
-      <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
     </form>
   </div>
 </nav>

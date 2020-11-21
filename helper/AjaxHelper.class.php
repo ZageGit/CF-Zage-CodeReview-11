@@ -32,7 +32,7 @@ public function getLiveSearchResult()
     return $tmpResult;
     }
     else {
-        return false; 
+        return "error"; 
     } 
 }
 }

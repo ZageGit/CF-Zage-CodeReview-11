@@ -22,14 +22,12 @@ if(!isLoggedIn()) {
 
 </head>
 <body>
-
 <?php 
 include 'templates/nav.php';
 ?>
-
-
 <div class="container">
-           <?php 
+<div class="row">
+<?php 
 
 $sql = "SELECT * from animals";
 $result =  mysqli_query($connect, $sql);
@@ -37,6 +35,7 @@ $result =  mysqli_query($connect, $sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
      echo  "
+     <div class='col-3'>
 <ul class='list-group list-group-flush'>
   <li class='list-group-item'>1. ID: ".$row['animal_id']." </li>
   <li class='list-group-item'>2. type: ".$row['animal_size']." </li>
@@ -48,14 +47,15 @@ if ($result->num_rows > 0) {
   <li class='list-group-item'>8. publisher address: ".$row['animal_hobbies']." </li>
   <li class='list-group-item'>9. publisher size: ".$row['animal_breed']." </li>
 </ul>
+</div>
 " ;
 
   }
 } else {
    echo "No data available!";
 }
-
-           ?>
+?>
+</div>
 </div>
 <nav class="navbar navbar-dark bg-dark sticky-bottom text-white mt-2">
   <a class="navbar-brand">PetAdoption</a>

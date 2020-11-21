@@ -84,6 +84,12 @@ include 'templates/nav.php';
 
 
 <div class="container ">
+<div class="container">
+<p>User Login= user@test.com | 123123</p>
+<p>Admin Login= admin@test.com | 123123</p>
+<p>Super Admmin Login= sadmin@test.com | 123123</p>
+<p></p>
+<p></p></div>
 <div class="row centered-form d-flex justify-content-center m-5">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">

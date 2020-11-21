@@ -34,7 +34,7 @@ include 'templates/nav.php';
 
 <div class="container">
 <h2>User Admnistration</h2>
-<div class="d-flex justify-content-around">
+<div class="row">
 <?php
 if ($_GET['user_id']) {
 	
@@ -54,7 +54,7 @@ if ($_GET['user_id']) {
                     <p class='card-text'>".$row['user_email']."</p>
                     </div>
                     <div>
-                    <a href='update.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-primary'>Update</button></a>
+                    <a href='user_update.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-primary'>Update</button></a>
                     <a href='delete.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-danger'>Delete</button></a>                  
                     </div>
             </div>
@@ -67,6 +67,7 @@ if ($_GET['user_id']) {
 ?>
 </div>
 </div>
+
 <nav class="navbar navbar-dark bg-dark sticky-bottom text-white mt-2">
   <a class="navbar-brand">PetAdoption</a>
     <a class="nav-link" href="logout.php?logout"><button type="button" class="btn btn-danger">Logout</button></a>

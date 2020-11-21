@@ -44,10 +44,10 @@ if ($result->num_rows > 0) {
  <div class='jumbotron'>
   <h1 class='display-4'>".$row['animal_name']."</h1>
   <hr class='my-4'>
-  <p>Animal_SIze: ".$row['animal_size']."</p>
-  <p>Animal_Descsription: ".$row['animal_description']."</p>
-  <p>Animal_Location: ".$row['animal_location']."</p>
-  <p>Animal_Age ".$row['animal_age']."</p>
+  <h5>Animal size: ".$row['animal_size']."</h5>
+  <h5>Animal description: ".$row['animal_description']."</h5>
+  <h5>Animal location: ".$row['animal_location']."</h5>
+  <h5>Animal age: ".$row['animal_age']."</h5>
 </div>
 <div class='text-center'>
   <img src='".$row['animal_image']."' class='rounded' alt='".$row['animal_name']."'>
@@ -57,18 +57,18 @@ if ($result->num_rows > 0) {
 <p>".$row['animal_description']."</p>
 </div>
 
-
-<ul class='list-group list-group-flush'>
-  <li class='list-group-item'>1. ID: ".$row['animal_id']." </li>
-  <li class='list-group-item'>2. type: ".$row['animal_size']." </li>
-  <li class='list-group-item'>3. title: ".$row['animal_name']." </li>
-  <li class='list-group-item'>4. author: ".$row['animal_image']." </li>
-  <li class='list-group-item'>5. ISBN: ".$row['animal_description']." </li>
-  <li class='list-group-item'>6. publishing date: ".$row['animal_location']." </li>
-  <li class='list-group-item'>7. publisher: ".$row['animal_age']." </li>
-  <li class='list-group-item'>8. publisher address: ".$row['animal_hobbies']." </li>
-  <li class='list-group-item'>9. publisher size: ".$row['animal_breed']." </li>
+<ul class='list-group'>
+  <li class='list-group-item'>ID: ".$row['animal_id']." </li>
+  <li class='list-group-item'>Animal type: ".$row['animal_size']." </li>
+  <li class='list-group-item'>Animal name: ".$row['animal_name']." </li>
+  <li class='list-group-item'>Image Link: ".$row['animal_image']." </li>
+  <li class='list-group-item'>Animal Description: ".$row['animal_description']." </li>
+  <li class='list-group-item'>Animal location: ".$row['animal_location']." </li>
+  <li class='list-group-item'>Animal age: ".$row['animal_age']." </li>
+  <li class='list-group-item'>Animal Hobbies: ".$row['animal_hobbies']." </li>
+  <li class='list-group-item'>Animal breed: ".$row['animal_breed']." </li>
 </ul>
+
 " ;
 
   }
