@@ -32,8 +32,8 @@ include 'templates/nav.php';
 
 
 <div class="container">
-<h2>All Animals</h2>
-<div class="d-flex justify-content-around">
+<h2>Seenior Animals</h2>
+<div class="row d-flex justify-content-around">
 <?php
           $sql = "SELECT * FROM animals WHERE animal_size='senior'";
           $result =  mysqli_query($connect, $sql);
