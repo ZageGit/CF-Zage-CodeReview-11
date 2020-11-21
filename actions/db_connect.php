@@ -1,6 +1,9 @@
 <?php
-error_reporting( ~E_DEPRECATED & ~E_NOTICE );
+// error_reporting( ~E_DEPRECATED & ~E_NOTICE );
 
+
+ob_start();
+session_start();
 
 $localhost = "localhost";
 $username ="root";
@@ -18,3 +21,5 @@ if($connect->connect_error) {
 } else {
     // echo "Successfully Connected";
 }
+
+

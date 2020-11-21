@@ -1,5 +1,4 @@
 <?php
-
 require_once 'actions/db_connect.php';
 
 ?>
@@ -18,10 +17,10 @@ require_once 'actions/db_connect.php';
 
 </head>
 <body id="index_body">
+
 <?php 
 include 'templates/nav.php';
 ?>
-
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -53,6 +52,8 @@ include 'templates/nav.php';
                       </ul>
                 <div class='card-body'>
                 <a href='details.php?animal_id=".$row['animal_id']."'><button type='button' class='btn btn-primary'>Details</button></a>
+                <a href='update.php?animal_id=".$row['animal_id']."'><button type='button' class='btn btn-primary'>Update</button></a>
+                <a href='delete.php?animal_id=".$row['animal_id']."'><button type='button' class='btn btn-danger'>Delete</button></a>            
                 </div>
             </div>
           " ;

@@ -1,25 +1,15 @@
 <?php
-ob_start();
-session_start();
-
 require_once 'actions/db_connect.php';
 echo "</br> create.php";
-if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION['s_admin']) ) {
-    header("Location: login.php");
-    exit;
-   } 
-   if (isset($_SESSION['user'])){
-       header("Location: index.php");
-   } 
 
-   if (isset($_SESSION['user_id'])) {
-	
-    $id = $_SESSION['user_id'];
-  
-    $sql = "SELECT * FROM users WHERE user_id = {$id}";
-    $result = $connect->query($sql);
-  
-    $data = $result->fetch_assoc();
+if( !isset($_SESSION['user_id'])) {
+  header("Location: login.php");
+  exit;
+ } 
+ if (isset($_SESSION['user'])){
+  header("Location: index.php");
+}
+
   
 ?>
 
@@ -35,33 +25,11 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="create.php">New Animal</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="update.php">Update</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="create.php">Add new Animal</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+<?php 
+include 'templates/nav.php';
+?>
+
 
 <div class="container"> 
 <h2 class="p-4">Add a new animal to petadoption</h2>
@@ -106,7 +74,7 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
     <!-- Default input -->
     <div class="form-group col-md-6">
       <label for="inputEmail4">Hobbies</label>
-      <input type="text" name="animal_hobies" class="form-control" id="inputEmail4" placeholder="Animal Hobbies">
+      <input type="text" name="animal_hobbies" class="form-control" id="inputEmail4" placeholder="Animal Hobbies">
     </div>
     <!-- Default input -->
     <div class="form-group col-md-6">
@@ -116,10 +84,11 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Short Description</label>
-    <textarea type="text" class="form-control"name="short_description" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea type="text" class="form-control"name="animal_description" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
   <div class="form-row">
     <!-- Default input -->
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
 
 </form>
 
@@ -133,3 +102,4 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
 
 </body>
 </html>
+

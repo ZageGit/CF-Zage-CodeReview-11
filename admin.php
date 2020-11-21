@@ -1,28 +1,16 @@
 <?php
-ob_start();
-session_start();
 
 require_once 'actions/db_connect.php';
-ob_start();
-session_start();
 
-if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION['s_admin']) ) {
-    header("Location: login.php");
-    exit;
-   } 
-   if (isset($_SESSION['user'])){
-       header("Location: index.php");
-   }
-   
-   if (isset($_SESSION['user_id'])) {
-	
-    $id = $_SESSION['user_id'];
-  
-    $sql = "SELECT * FROM users WHERE user_id = {$id}";
-    $result = $connect->query($sql);
-  
-    $data = $result->fetch_assoc();
-  
+if( !isset($_SESSION['user_id'])) {
+  header("Location: login.php");
+  exit;
+ } 
+ if (isset($_SESSION['user'])){
+  header("Location: index.php");
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -37,34 +25,11 @@ if( !isset($_SESSION['admin']) && !isset($_SESSION['user'])  && !isset($_SESSION
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="create.php">New Animal</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="update.php">Update</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="create.php">Add new Animal</a>
-      </li>
+<?php 
+include 'templates/nav.php';
+?>
 
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
 
 <div class="container">
            <?php 
@@ -80,7 +45,7 @@ if ($result->num_rows > 0) {
   <li class='list-group-item'>2. type: ".$row['animal_size']." </li>
   <li class='list-group-item'>3. title: ".$row['animal_name']." </li>
   <li class='list-group-item'>4. author: ".$row['animal_image']." </li>
-  <li class='list-group-item'>5. ISBN: ".$row['animal_descripton']." </li>
+  <li class='list-group-item'>5. ISBN: ".$row['animal_description']." </li>
   <li class='list-group-item'>6. publishing date: ".$row['animal_location']." </li>
   <li class='list-group-item'>7. publisher: ".$row['animal_age']." </li>
   <li class='list-group-item'>8. publisher address: ".$row['animal_hobbies']." </li>
@@ -102,7 +67,6 @@ if ($result->num_rows > 0) {
 
 </body>
 </html>
-
 
 
 
