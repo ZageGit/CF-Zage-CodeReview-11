@@ -29,8 +29,6 @@ include 'templates/nav.php';
     <p class="lead">This lovely animals are looking for a place to stay, please take them!!!</p>
   </div>
 </div>
-
-
 <div class="container">
 <h2>All Animals</h2>
 <div class=" row d-flex justify-content-around">
@@ -62,11 +60,7 @@ include 'templates/nav.php';
               echo "No date available!";
             }
 ?>
-
 </div>
-
-
-
 </div>
 <nav class="navbar navbar-dark bg-dark sticky-bottom text-white mt-2">
   <a class="navbar-brand">PetAdoption</a>

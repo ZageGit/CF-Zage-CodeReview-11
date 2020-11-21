@@ -35,7 +35,7 @@ include 'templates/nav.php';
 <h2>Seenior Animals</h2>
 <div class="row d-flex justify-content-around">
 <?php
-          $sql = "SELECT * FROM animals WHERE animal_size='senior'";
+          $sql = "SELECT * FROM animals WHERE animal_age>8";
           $result =  mysqli_query($connect, $sql);
 
           if ($result->num_rows > 0) {
