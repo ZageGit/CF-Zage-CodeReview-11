@@ -48,7 +48,7 @@ if ($_GET['user_id']) {
               while($row = $result->fetch_assoc()) {
                 echo  "
                 <div class='card col-3'>
-                <img class='card-img-top' src='".$row['user_id']."' alt='Card image cap'>
+                <img class='card-img-top' src='https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257_960_720.png' alt='Card image cap'>
                   <div class='card-body'>
                     <h5 class='card-title'>".$row['user_name']."</h5>
                     <p class='card-text'>".$row['user_email']."</p>
