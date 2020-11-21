@@ -72,7 +72,6 @@ if($_POST){
         echo "<div class='alert alert-success' role='alert'>
         Updating User successful!
       </div>";
-		echo "<a href='../update.php?user_id=" . $user_id . "'><button type='button' class='btn btn-primary'>Back</button></a>";
 		echo "<a href='../sadmin.php'><button type='button' class='btn btn-success'>Home</button></a>";
 
 

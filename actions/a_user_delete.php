@@ -63,16 +63,16 @@ require_once 'db_connect.php';
 
 if ($_POST) {
 
-    $animal_id = $_POST['animal_id'];
+    $user_id = $_POST['user_id'];
 
-$animal_sql ="DELETE FROM animals WHERE animal_id = {$animal_id}";
+$user_sql ="DELETE FROM users WHERE user_id = {$user_id}";
 
-   if($connect->query($animal_sql)){
+   if($connect->query($user_sql)){
 
 
         echo "<div class='alert alert-success' role='alert'>
         Item successful deleted!      </div>";
-		echo "<a href='../index.php'><button type='button' class='btn btn-success'>Home</button></a>";
+		echo "<a href='../sadmin.php'><button type='button' class='btn btn-success'>Home</button></a>";
 
     } else {
         echo "error";

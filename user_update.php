@@ -33,7 +33,7 @@ include 'templates/nav.php';
 <div class="container"> 
 <h2 class="p-4">Update user </h2>
 <!-- Extended default form grid -->
-<form action="actions/user_update.php" method= "post">
+<form action="actions/a_user_update.php" method= "post">
   <!-- Grid row -->
   <div class="form-row">
     <!-- Default input -->

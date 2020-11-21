@@ -55,7 +55,7 @@ if ($_GET['user_id']) {
                     </div>
                     <div>
                     <a href='user_update.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-primary'>Update</button></a>
-                    <a href='delete.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-danger'>Delete</button></a>                  
+                    <a href='user_delete.php?user_id=".$row['user_id']."'><button type='button' class='btn btn-danger'>Delete</button></a>                  
                     </div>
             </div>
           " ;
