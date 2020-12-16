@@ -1,6 +1,8 @@
 <?php
 require_once 'actions/db_connect.php';
 require_once 'helper/UserHelper.php';
+
+
 if(isLoggedIn()) {
   header("Location: index.php");
  } 
@@ -41,7 +43,9 @@ if( isset($_POST['btn-login']) ) {
   $count = mysqli_num_rows($res); // if uname/pass is correct it returns must be 1 row
  
   if( $count == 1 && $row['user_pass' ]==$password ) {
-    $_SESSION['user_id']= $row['user_id'];
+$date = new DateTime();
+   $_SESSION['ts_login'] = $date->getTimestamp();
+   $_SESSION['user_id']= $row['user_id'];
     if($row["user_status"]=='admin'){
         $_SESSION['admin'] = TRUE;
         header( "Location: admin.php");
